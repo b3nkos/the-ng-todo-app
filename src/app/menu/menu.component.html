@@ -4,13 +4,13 @@
       <a href="#" class="navbar-brand" routerLink="/welcome/b3nkos">The todo app</a>
     </div>
     <ul class="navbar-nav">
-      <li><a href="#" class="nav-link" routerLink="/welcome/b3nkos">Home</a></li>
-      <li><a href="#" class="nav-link" routerLink="/todos">Todos</a></li>
+      <li><a *ngIf="isUserLoggedIn()" href="#" class="nav-link" routerLink="/welcome/b3nkos">Home</a></li>
+      <li><a *ngIf="isUserLoggedIn()" href="#" class="nav-link" routerLink="/todos">Todos</a></li>
     </ul>
 
     <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li><a href="#" class="nav-link" routerLink="/login">Login</a></li>
-      <li><a href="#" class="nav-link" routerLink="/logout">Logout</a></li>
+      <li><a *ngIf="isUserLoggedOut()" href="#" class="nav-link" routerLink="/login">Login</a></li>
+      <li><a *ngIf="isUserLoggedIn()" href="#" class="nav-link" routerLink="/logout">Logout</a></li>
     </ul>
   </nav>
 </header>

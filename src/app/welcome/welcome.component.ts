@@ -12,7 +12,6 @@ export class WelcomeComponent implements OnInit {
   name = '';
 
   constructor(private route: ActivatedRoute) {
-    console.log(this.message);
     this.name = this.route.snapshot.params.name;
   }
 

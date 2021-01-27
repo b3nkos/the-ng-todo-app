@@ -11,6 +11,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
 import {AppRoutingModule} from './app-routing.module';
 import { LogoutComponent } from './logout/logout.component';
+import {HttpClientModule} from '@angular/common/http';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     WelcomeComponent,
     ErrorComponent,
-    LogoutComponent
+    LogoutComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

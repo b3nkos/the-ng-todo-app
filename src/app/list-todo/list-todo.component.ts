@@ -40,4 +40,8 @@ export class ListTodoComponent implements OnInit {
     );
   }
 
+  handleAddTodo(): void {
+    this.router.navigate(['todos/add']);
+  }
+
 }

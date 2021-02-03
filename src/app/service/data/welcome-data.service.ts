@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {API_URL} from '../../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class WelcomeDataService {
   }
 
   executeHelloWorldService(): Observable<WelcomeMessage> {
-    return this.httpClient.get<WelcomeMessage>('http://localhost:8080/hello-world');
+    return this.httpClient.get<WelcomeMessage>(`${API_URL}/hello-world`);
   }
 
   executeHelloWorldWithPathVariable(name: string): Observable<WelcomeMessage> {
-    return this.httpClient.get<WelcomeMessage>(`http://localhost:8080/hello-world/path-variable/${name}`);
+    return this.httpClient.get<WelcomeMessage>(`${API_URL}/hello-world/path-variable/${name}`);
   }
 }
 

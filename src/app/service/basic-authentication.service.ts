@@ -8,12 +8,28 @@ import {API_URL} from '../app.constants';
 const TOKEN = 'token';
 const AUTHENTICATED_USER = 'authenticatedUser';
 
+class TokenResponse {
+  constructor(public token: string) {
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class BasicAuthenticationService {
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  executeJWTAuthenticationService(username: string, password: string): Observable<TokenResponse> {
+    return this.httpClient.post<TokenResponse>(`${API_URL}/authenticate`, {
+      username,
+      password
+    }).pipe(map(tokenResponse => {
+      sessionStorage.setItem(AUTHENTICATED_USER, username);
+      sessionStorage.setItem(TOKEN, `Bearer ${tokenResponse.token}`);
+      return tokenResponse;
+    }));
   }
 
   executeAuthenticationService(username: string, password: string): Observable<BasicAuthentication> {
@@ -27,7 +43,7 @@ export class BasicAuthenticationService {
       headers
     }).pipe(map(data => {
       sessionStorage.setItem(AUTHENTICATED_USER, username);
-      sessionStorage.setItem('token', basicAuthString);
+      sessionStorage.setItem(TOKEN, basicAuthString);
       return data;
     }));
   }
